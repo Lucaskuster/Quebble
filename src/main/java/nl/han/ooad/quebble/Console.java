@@ -5,10 +5,11 @@ import nl.han.ooad.quebble.service.Spel;
 import java.util.Scanner;
 
 public class Console {
-    Spel spel = new Spel();
 
     public static void main(String[] args) {
         var console = new Console();
+        Spel spel = new Spel();
+
         boolean stoppen = false;
         do {
             System.out.println("-------------------------------");
@@ -21,46 +22,37 @@ public class Console {
             Scanner input = new Scanner(System.in);
             switch (input.next()) {
                 case "1":
-                    console.registrerenConsole();
+                    console.registrerenConsole(spel);
                     break;
                 case "2":
-                    console.inloggenConsole();
+                    console.inloggenConsole(spel);
                     break;
                 case "3":
-                    console.speelSpelConsole();
+                    if(spel.speler == null) {
+                        System.out.println("Log eerst in.");
+                    } else {
+                        console.speelSpelConsole(spel);
+                    }
                     break;
                 case "4":
                     stoppen = true;
                     break;
             }
-
-            // speelSpel: speler
-
-            // beantwoordVraag: antwoordspeler
-
-            // controleerWoord: gegevenWoord
         }
         while (!stoppen);
     }
 
-    private void inloggenConsole() {
+    private void inloggenConsole(Spel spel) {
         Scanner input = new Scanner(System.in);
         System.out.println("Log in");
         System.out.print("Gebruikersnaam: ");
         var gebruikersnaam = input.next();
         System.out.print("Wachtwoord: ");
         var wachtwoord = input.next();
-
         spel.inloggen(gebruikersnaam, wachtwoord);
-
-        // fout en mogelijkheid om account aan te maken.
-
-
-        System.out.println("login succes");
     }
 
-    // Er wordt niet gecontroleerd op bestaande account, dit is geen requirement.
-    private void registrerenConsole() {
+    private void registrerenConsole(Spel spel) {
         Scanner input = new Scanner(System.in);
         System.out.println("registreer");
         System.out.print("Gebruikersnaam: ");
@@ -70,7 +62,7 @@ public class Console {
         spel.registeren(gebruikersnaam, wachtwoord);
     }
 
-    private void speelSpelConsole() {
+    private void speelSpelConsole(Spel spel) {
 
     }
 

@@ -10,18 +10,18 @@ public class Vraag {
     private Spel antwoordSpeler;
     private boolean nietActief;
 
-    public String getAntwoord() {
-        return "hallo";
-    }
-
-    public String getLetter() {
-//        if(antwoordSpeler != antwoord){
-//            return null;
-//        }
-        return letter;
-    }
-
-    public String getVraag() {
-        return "vraag";
-    }
+//    public String getAntwoord() {
+//        return "hallo";
+//    }
+//
+//    public String getLetter() {
+////        if(antwoordSpeler != antwoord){
+////            return null;
+////        }
+//        return letter;
+//    }
+//
+//    public String getVraag() {
+//        return "vraag";
+//    }
 }

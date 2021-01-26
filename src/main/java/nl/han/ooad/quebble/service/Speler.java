@@ -16,14 +16,12 @@ public class Speler {
     public Speler(String gebruikersnaam, String wachtwoord) {
         this.gebruikersnaam = gebruikersnaam;
         this.wachtwoord = wachtwoord;
-        this.gespeeldeQuizes =  new ArrayList<Integer>();
+        this.gespeeldeQuizes =  new ArrayList<>();
         this.credits = START_CREDITS;
     }
 
     public ArrayList<Integer> getGespeeldeQuizes() {
-        var gespeeldeQuizes = new ArrayList<Integer>(){};
-        gespeeldeQuizes.add(1);
-        return gespeeldeQuizes;
+        return new ArrayList<>(){};
     }
 
     public static Speler getSpeler(String gebruikersnaam){
