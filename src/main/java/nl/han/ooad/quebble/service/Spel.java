@@ -38,7 +38,29 @@ public class Spel {
 //
 //    }
 //
-//    public void inloggen(){
-//
-//    }
+    public void inloggen(String gebruikersnaam, String wachtwoord){
+
+
+        this.speler = Speler.getSpeler(gebruikersnaam);
+    }
+
+    public Gebruiker getAccount(String gebruikersnaam) {
+        var wachtwoord = selectWachtwoord(gebruikersnaam);
+        var saldo = selectSaldo(gebruikersnaam);
+        return new Gebruiker(gebruikersnaam, wachtwoord, saldo);
+    }
+
+    private String selectWachtwoord(String naam) {
+        if (naam == "Pieter") {
+            return "WW";
+        }
+        return "";
+    }
+
+    private int selectSaldo(String naam) {
+        if (naam == "Pieter") {
+            return 1000;
+        }
+        return 0;
+    }
 }

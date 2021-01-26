@@ -15,9 +15,9 @@ public class Vraag {
     }
 
     public String getLetter() {
-        if(antwoordSpeler != antwoord){
-            return null;
-        }
+//        if(antwoordSpeler != antwoord){
+//            return null;
+//        }
         return letter;
     }
 

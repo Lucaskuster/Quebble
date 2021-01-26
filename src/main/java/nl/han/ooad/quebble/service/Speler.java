@@ -1,5 +1,7 @@
 package nl.han.ooad.quebble.service;
 
+import nl.han.ooad.quebble.database.Database;
+
 import java.util.ArrayList;
 
 public class Speler {
@@ -8,16 +10,30 @@ public class Speler {
     private int credits;
     private ArrayList<Integer> gespeeldeQuizes;
 
-    public Speler() {
-        var gespeeldeQuizes = new ArrayList<Integer>();
-        gespeeldeQuizes.add(1);
-        this.gespeeldeQuizes = gespeeldeQuizes;
+    private final int START_CREDITS = 1000;
+    private Database database = new Database();
+
+    public Speler(String gebruikersnaam, String wachtwoord) {
+        this.gebruikersnaam = gebruikersnaam;
+        this.wachtwoord = wachtwoord;
+        this.gespeeldeQuizes =  new ArrayList<Integer>();
+        this.credits = START_CREDITS;
     }
 
     public ArrayList<Integer> getGespeeldeQuizes() {
         var gespeeldeQuizes = new ArrayList<Integer>(){};
         gespeeldeQuizes.add(1);
         return gespeeldeQuizes;
+    }
+
+    public Speler getSpeler(String gebruikersnaam){
+        ArrayList<Speler> spelers = database.spelers();
+        for (Speler speler:spelers){
+            if (gebruikersnaam.equals(speler.getGebruikersnaam())){
+                return speler;
+            }
+        }
+        return null;
     }
 
     public void addGespeeldeQuizes(int quizId) {
