@@ -1,6 +1,9 @@
 package nl.han.ooad.quebble.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Spel {
     public Quiz geselecteerdeQuiz;
@@ -58,7 +61,7 @@ public class Spel {
     public void beantwoordVraag(String antwoordSpeler) {
         voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler, vraagNummer));
         vraagNummer++;
-        if(vraagNummer < 8) {
+        if (vraagNummer < 8) {
             System.out.println();
             System.out.println("---------------------------------");
             geselecteerdeQuiz.laatVraagZien(vraagNummer);
@@ -69,9 +72,9 @@ public class Spel {
         letters.add(letter);
     }
 
-    public void laatLettersZien(){
+    public void laatLettersZien() {
         String output = "";
-        for (String letter: letters) {
+        for (String letter : letters) {
             output = output.concat(letter + " - ");
         }
         System.out.println();
@@ -84,13 +87,30 @@ public class Spel {
     public void controleerWoord(String gegevenWoord) {
         var woordControle = new WoordControle();
 
-        if(woordControle.woordControle(gegevenWoord)) {
-            System.out.println(gegevenWoord + " is een bestaand woord!");
+        if (controleerLetters(gegevenWoord)) {
+            if (woordControle.woordControle(gegevenWoord)) {
+                System.out.println(gegevenWoord + " is een bestaand woord!");
+            } else {
+                System.out.println(gegevenWoord + " is een niet bestaand woord, helaas.");
+            }
         } else {
-            System.out.println(gegevenWoord + " is een niet bestaand woord, helaas.");
+            System.out.println("Niet de juiste letters gebruikt.");
         }
         System.out.println();
         System.out.println("|||||||||||||||||||||||||||||||||||||||| - EINDE QUIZ - ||||||||||||||||||||||||||||||||||||||||");
         System.out.println();
+    }
+
+    private boolean controleerLetters(String gegevenWoord){
+        var woordNaarArray = Arrays.stream(gegevenWoord.split("")).collect(Collectors.toCollection(ArrayList::new));
+
+        woordNaarArray.removeAll(letters);
+
+//        for (String letterUitWoord : lettersUitWoord) {
+//            if (letters.stream().forEach(element -> element.toLowerCase().equals(letterUitWoord))) {
+//                return false;
+//            }
+//        }
+        return true;
     }
 }
