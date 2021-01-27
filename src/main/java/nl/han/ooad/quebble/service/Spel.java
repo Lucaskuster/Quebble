@@ -1,16 +1,13 @@
 package nl.han.ooad.quebble.service;
 
-import java.awt.desktop.AppReopenedEvent;
 import java.util.ArrayList;
 
 public class Spel {
-    public static final int AANTAL_VRAGEN = 8;
-    public static final int EERSTE_VRAAG = 0;
     public Quiz geselecteerdeQuiz;
     public Speler speler;
     private Score score;
     private ArrayList<String> letters;
-    int vraagNummer = 1;
+    int vraagNummer;
 
     public void inloggen(String gebruikersnaam, String wachtwoord) {
         var speler = Speler.getSpeler(gebruikersnaam);
@@ -52,28 +49,42 @@ public class Spel {
         this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
         // TODO kan misschien weg
         this.score = new Score();
-        geselecteerdeQuiz.laatVraagZien(EERSTE_VRAAG);
+        this.vraagNummer = 0;
+        this.letters = new ArrayList<>();
+        this.geselecteerdeQuiz.laatVraagZien(vraagNummer);
         // TODO nadenken over het aanmaken van een score, deze wordt nu aangemaakt in Spel en niet in Quiz.
     }
 
     public void beantwoordVraag(String antwoordSpeler) {
-        // verwerken antwoord
-        if(vraagNummer < 8) {
-            geselecteerdeQuiz.laatVraagZien(vraagNummer);
-            System.out.println();
-        }
+        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler, vraagNummer));
         vraagNummer++;
+        if(vraagNummer < 8) {
+            System.out.println();
+            System.out.println("---------------------------------");
+            geselecteerdeQuiz.laatVraagZien(vraagNummer);
+        }
     }
 
-    public void voegLetterToe(String letter) {
-
+    private void voegLetterToe(String letter) {
+        letters.add(letter);
     }
 
-//    public String laatLettersZien(){ // vgm moet dit void worden
-//
-//    }
+    public void laatLettersZien(){
+        String output = "";
+        for (String letter: letters) {
+            output = output.concat(letter + " - ");
+        }
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println("Dit zijn de letters van de goed beantwoordde vragen.");
+        System.out.println(output);
+        System.out.print("Een woord wat je hiermee kunt maken is: ");
+    }
 
     public void controleerWoord(String gegevenWoord) {
-
+        System.out.println("Dat is correct!! ");
+        System.out.println();
+        System.out.println("|||||||||||||||||||||||||||||||||||||||| - EINDE QUIZ - ||||||||||||||||||||||||||||||||||||||||");
+        System.out.println();
     }
 }

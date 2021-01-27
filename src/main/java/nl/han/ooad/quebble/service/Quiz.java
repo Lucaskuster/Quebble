@@ -1,20 +1,15 @@
 package nl.han.ooad.quebble.service;
 
 import nl.han.ooad.quebble.database.DatabaseQuizzes;
-import nl.han.ooad.quebble.database.DatabaseVragen;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.function.Predicate.not;
-
 public class Quiz {
-    private static DatabaseQuizzes databaseQuizzes = new DatabaseQuizzes();
-    private static DatabaseVragen databaseVragen = new DatabaseVragen();
-    private int quizId;
-
-    private ArrayList<Vraag> vragen;
+    private final static DatabaseQuizzes databaseQuizzes = new DatabaseQuizzes();
+    private final int quizId;
+    private final ArrayList<Vraag> vragen;
 
     public Quiz(int quizId, ArrayList<Vraag> vragen) {
         this.quizId = quizId;
@@ -45,24 +40,38 @@ public class Quiz {
         return quizId;
     }
 
-
     public void laatVraagZien(int vraagId){
-//        var vragen = databaseQuizzes.getQuiz(this.getQuizId());
-//        var vraag = vragen.getVragen().get(vraagId);
-//
-//        vragen.databaseVragen.getMeerkeuzeVragen();
-//        System.out.println(vraag.getVraag());
-//        System.out.println(vraag.);
-//        if(vraag.equals(MeerkeuzeVraag.class)){
-//
-//        }
+        var vraag = this.vragen.get(vraagId);
+
+        System.out.println(vraag.getVraag());
+        if(vraag.getClass().equals(MeerkeuzeVraag.class)){
+            var fouteAntwoorden = ((MeerkeuzeVraag) vraag).getFouteAntwoorden();
+
+            for (String fouteAntwoord: fouteAntwoorden) {
+                System.out.print(fouteAntwoord);
+                System.out.print("   *   ");
+            }
+
+            var juisteAntwoord = ((MeerkeuzeVraag) vraag).getAntwoord();
+            System.out.print( juisteAntwoord.getAntwoord());
+            System.out.println();
+        }
     }
 
-    public ArrayList<Vraag> getVragen() {
-        return vragen;
-    }
+    public String controleerAntwoord(String antwoordSpeler, int vraagId){
+        var vraag = this.vragen.get(vraagId);
 
-    public void setVragen(ArrayList<Vraag> vragen) {
-        this.vragen = vragen;
+        if (vraag.getClass().equals(MeerkeuzeVraag.class)) {
+            var antwoord = ((MeerkeuzeVraag) vraag).getAntwoord();
+            if (antwoordSpeler.equals(antwoord.getAntwoord())) {
+                return vraag.getLetter();
+            }
+        } else {
+            var antwoorden = ((OpenVraag) vraag).getAntwoorden();
+            if (antwoorden.stream().anyMatch(element -> element.getAntwoord().equals(antwoordSpeler))) {
+                return vraag.getLetter();
+            }
+        }
+        return "";
     }
 }

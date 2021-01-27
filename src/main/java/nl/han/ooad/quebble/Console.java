@@ -10,7 +10,9 @@ public class Console {
 
     //TODO spel is niet static dus het klasse diagram moet aangepast worden, in console gebruiken we telkens een instantie spel
 
-    //TODO na het spelen van 3 quizen krijg je een foutmelding, omdat er maar 2 quizen zijn.
+    //TODO na het spelen van 3 quizzen krijg je een foutmelding, omdat er maar 2 quizzen zijn.
+
+    //TODO meer soutjes naar de 'front-end' krijgen
 
     public static void main(String[] args) {
         var console = new Console();
@@ -81,23 +83,24 @@ public class Console {
         //TODO speelSpel in de documentatie veranderen naar speelQuiz.
         spel.speelQuiz();
 
+        // laat vraag zien          /\
+        // beantwoord de vraag      /\
+        // controleer antwoord      /\
+        // voeg letter toe          /\
+        // herhaal 8 keer           /\
+
         for(int i = 0; i < 8; i++) {
             beantwoordVraagConsole(spel);
         }
 
-
-        // laat vraag zien
-        // beantwoord de vraag
-            // controleer antwoord
-            // voeg letter toe
-        // herhaal 8 keer
-
         // voeg aantal correcte vragen toe aan score
         // laat letters zien
 
-        // maak woord
+        spel.laatLettersZien();
 
+        // maak woord
         // controleer woord
+        controleerWoordConsole(spel);
 
         // bereken score
     }
@@ -107,7 +110,8 @@ public class Console {
         spel.beantwoordVraag(input.next());
     }
 
-    private static void controleerWoordConsole() {
-
+    private static void controleerWoordConsole(Spel spel) {
+        Scanner input = new Scanner(System.in);
+        spel.controleerWoord(input.next());
     }
 }
