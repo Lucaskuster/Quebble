@@ -9,23 +9,20 @@ public class Speler {
     private String gebruikersnaam;
     private String wachtwoord;
     private int credits;
-    private ArrayList<Integer> gespeeldeQuizes;
+    private ArrayList<Integer> gespeeldeQuizzes;
 
     private final int START_CREDITS = 1000;
+    private final int KOSTEN_QUIZ = 40;
 
     public Speler(String gebruikersnaam, String wachtwoord) {
         this.gebruikersnaam = gebruikersnaam;
         this.wachtwoord = wachtwoord;
-        this.gespeeldeQuizes =  new ArrayList<>();
+        this.gespeeldeQuizzes =  new ArrayList<>();
         this.credits = START_CREDITS;
     }
 
-    public ArrayList<Integer> getGespeeldeQuizes() {
-        return new ArrayList<>(){};
-    }
-
     public static Speler getSpeler(String gebruikersnaam){
-        databaseSpelers.Database();
+        databaseSpelers.DatabaseSpelers();
         ArrayList<Speler> spelers = databaseSpelers.getSpelers();
         for (Speler speler:spelers){
             if (gebruikersnaam.equals(speler.getGebruikersnaam())){
@@ -42,35 +39,27 @@ public class Speler {
         }
     }
 
-    public void addGespeeldeQuizes(int quizId) {
-        this.gespeeldeQuizes.add(quizId);
+    public ArrayList<Integer> getGespeeldeQuizzes() {
+        return gespeeldeQuizzes;
+    }
+
+    public void addGespeeldeQuizzes(int quizId) {
+        this.gespeeldeQuizzes.add(quizId);
     }
 
     public String getGebruikersnaam() {
         return gebruikersnaam;
     }
 
-    public void setGebruikersnaam(String gebruikersnaam) {
-        this.gebruikersnaam = gebruikersnaam;
-    }
-
     public String getWachtwoord() {
         return wachtwoord;
-    }
-
-    public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
     }
 
     public int getCredits() {
         return credits;
     }
 
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
-
-    public void setGespeeldeQuizes(ArrayList<Integer> gespeeldeQuizes) {
-        this.gespeeldeQuizes = gespeeldeQuizes;
+    public void verminderCredits() {
+        this.credits = credits - KOSTEN_QUIZ;
     }
 }

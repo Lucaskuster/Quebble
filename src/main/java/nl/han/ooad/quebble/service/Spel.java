@@ -18,7 +18,14 @@ public class Spel {
                 System.out.println("Inloggen voltooid");
                 System.out.println("Welkom " + speler.getGebruikersnaam() + "!");
                 System.out.println("U heeft nog " + speler.getCredits() + " credits.");
-                System.out.println("U heeft " + speler.getGespeeldeQuizes().size() + " quizzen gespeeld.");
+
+                System.out.print("U heeft " + speler.getGespeeldeQuizzes().size());
+                if (speler.getGespeeldeQuizzes().size() == 1) {
+                    System.out.print(" quiz ");
+                } else {
+                    System.out.print(" quizzen ");
+                }
+                System.out.println("gespeeld.");
                 System.out.println();
             } else {
                 System.out.println("Wachtwoord onjuist");
@@ -37,12 +44,17 @@ public class Spel {
         }
     }
 
-    public void SpeelSpel(Speler speler) {
-//        this.geselecteerdeQuiz = Quiz.getEenQuiz(speler); // static gemaakt
-//        this.score = new Score(); // denk eraan dat er een constructor is met creditstoevoegen
-//
+    public void speelQuiz() {
+        this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
+        this.score = new Score();
+
+        // loop vragen laten zien
+
+
+        // TODO nadenken over het aanmaken van een score, deze wordt nu aangemaakt in Spel en niet in Quiz.
+        // TODO dit hoeft niet meer, omdat spel een instantie is.
 //        var vragen = geselecteerdeQuiz.getVragen();
-//
+
 //        var vraag = geselecteerdeQuiz.laatVraagZien();
 //        System.out.println(vraag);
     }

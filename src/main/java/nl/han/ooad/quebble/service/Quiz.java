@@ -1,31 +1,54 @@
 package nl.han.ooad.quebble.service;
 
+import nl.han.ooad.quebble.database.DatabaseQuizzes;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.function.Predicate.not;
 
 public class Quiz {
+    private static DatabaseQuizzes databaseQuizzes = new DatabaseQuizzes();
     private int quizId;
     private ArrayList<Vraag> vragen;
     private Vraag vraag;
 
-//    public Quiz() {
+    public Quiz(int quizId, ArrayList<Vraag> vragen) {
+        this.quizId = quizId;
+        this.vragen = vragen;
+
+    }
+
+    // TODO op dit moment zijn de methode's getEenQuiz en selecteerQuiz methode's met namen die ongeveer hetzelfde betekenen. Dit heb ik aangepast
+    public static Quiz getEenQuiz(Speler speler) {
+        databaseQuizzes.DatabaseQuizzes();
+
+        var gespeeldeQuizzesId = speler.getGespeeldeQuizzes();
+        var beschikbareQuizzesId = databaseQuizzes.getQuizzesId();
+
+        List<Integer> quizzes = beschikbareQuizzesId.stream()
+                .filter(element -> !gespeeldeQuizzesId.contains(element))
+                .collect(Collectors.toList());
+        var quiz = databaseQuizzes.getQuiz(quizzes.get(0));
+
+        speler.addGespeeldeQuizzes(quiz.getQuizId());
+
+        // TODO diagrammen aanpassen, want ik roep deze later aan als in het sequence diagram.
+        speler.verminderCredits();
+
+        return quiz;
+    }
+
+    //TODO Let op deze TODO stond er al voor de herkansing, aanpassen in diagrammen en op private zetten, ook static gemaakt
+//    private static void selecteerQuiz(Speler speler){
 //
 //    }
-//
-//    public static Quiz getEenQuiz(Speler speler){
-//        var gespeeldeQuizes = speler.getGespeeldeQuizes();
-//        var geselecteerdeQuiz = selecteerQuiz(gespeeldeQuizes);
-//        speler.addGespeeldeQuizes(geselecteerdeQuiz.getQuizId());
-//        return geselecteerdeQuiz;
-//    }
-//
-//    public static Quiz selecteerQuiz(ArrayList<Integer> gespeeldeQuizes){ //aanpassen in diagrammen en op private zetten, ook static gemaakt
-//        var quiz = new Quiz(); //In deze methode moet hij een bestaande quiz pakken uit de database
-//        return quiz;
-//    }
-//
-//    private int getQuizId(){ // later toegevoegd
-//        return quizId;
-//    }
+
+    public int getQuizId() {
+        return quizId;
+    }
+
 //
 //    public String laatVraagZien(){
 //        return vraag.getVraag();

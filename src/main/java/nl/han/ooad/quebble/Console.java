@@ -6,6 +6,12 @@ import java.util.Scanner;
 
 public class Console {
 
+    //TODO controleren of het gebruik van static klassen ook is opgenomen in de documenten
+
+    //TODO spel is niet static dus het klasse diagram moet aangepast worden, in console gebruiken we telkens een instantie spel
+
+    //TODO na het spelen van 3 quizen krijg je een foutmelding, omdat er maar 2 quizen zijn.
+
     public static void main(String[] args) {
         var console = new Console();
         Spel spel = new Spel();
@@ -63,7 +69,31 @@ public class Console {
     }
 
     private void speelSpelConsole(Spel spel) {
+        System.out.println();
+        System.out.println("Veel plezier bij het spelen van de Quiz!");
 
+        // haal een quiz op                     /\
+            // maak een score                   /\
+            // verminder credits                /\
+            // voeg de gespeelde quiz toe aan gespeelde quizzes /\
+            // start een timer                  /\
+        //TODO speelSpel in de documentatie veranderen naar speelQuiz.
+        spel.speelQuiz();
+
+        // laat vraag zien
+        // beantwoord de vraag
+            // controleer antwoord
+            // voeg letter toe
+        // herhaal 8 keer
+
+        // voeg aantal correcte vragen toe aan score
+        // laat letters zien
+
+        // maak woord
+
+        // controleer woord
+
+        // bereken score
     }
 
     private static void beantwoordVraagConsole() {
