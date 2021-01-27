@@ -3,13 +3,13 @@ package nl.han.ooad.quebble.service;
 import java.util.ArrayList;
 
 public abstract class Antwoord {
-    private String[] juisteAntwoord;
+    private String juisteAntwoord;
 
-    public Antwoord (String[] juisteAntwoord){
+    public Antwoord (String juisteAntwoord){
         this.juisteAntwoord = juisteAntwoord;
     }
 
-    public String[] getAntwoord() {
+    public String getAntwoord() {
         return juisteAntwoord;
     }
 }

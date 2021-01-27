@@ -1,12 +1,16 @@
 package nl.han.ooad.quebble.service;
 
+import java.awt.desktop.AppReopenedEvent;
 import java.util.ArrayList;
 
 public class Spel {
-    private Quiz geselecteerdeQuiz;
+    public static final int AANTAL_VRAGEN = 8;
+    public static final int EERSTE_VRAAG = 0;
+    public Quiz geselecteerdeQuiz;
     public Speler speler;
     private Score score;
     private ArrayList<String> letters;
+    int vraagNummer = 1;
 
     public void inloggen(String gebruikersnaam, String wachtwoord) {
         var speler = Speler.getSpeler(gebruikersnaam);
@@ -48,20 +52,17 @@ public class Spel {
         this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
         // TODO kan misschien weg
         this.score = new Score();
-
-        // loop vragen laten zien
-
-
+        geselecteerdeQuiz.laatVraagZien(EERSTE_VRAAG);
         // TODO nadenken over het aanmaken van een score, deze wordt nu aangemaakt in Spel en niet in Quiz.
-        // TODO dit hoeft niet meer, omdat spel een instantie is.
-//        var vragen = geselecteerdeQuiz.getVragen();
-
-//        var vraag = geselecteerdeQuiz.laatVraagZien();
-//        System.out.println(vraag);
     }
 
     public void beantwoordVraag(String antwoordSpeler) {
-
+        // verwerken antwoord
+        if(vraagNummer < 8) {
+            geselecteerdeQuiz.laatVraagZien(vraagNummer);
+            System.out.println();
+        }
+        vraagNummer++;
     }
 
     public void voegLetterToe(String letter) {

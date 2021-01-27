@@ -1,7 +1,5 @@
 package nl.han.ooad.quebble.service;
 
-import java.util.ArrayList;
-
 public class MeerkeuzeVraag extends Vraag{
     private MeerkeuzeAntwoord antwoord;
 

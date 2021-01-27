@@ -71,6 +71,7 @@ public class Console {
     private void speelSpelConsole(Spel spel) {
         System.out.println();
         System.out.println("Veel plezier bij het spelen van de Quiz!");
+        System.out.println();
 
         // haal een quiz op                     /\
             // maak een score                   /\
@@ -79,6 +80,11 @@ public class Console {
             // start een timer                  /\
         //TODO speelSpel in de documentatie veranderen naar speelQuiz.
         spel.speelQuiz();
+
+        for(int i = 0; i < 8; i++) {
+            beantwoordVraagConsole(spel);
+        }
+
 
         // laat vraag zien
         // beantwoord de vraag
@@ -96,10 +102,9 @@ public class Console {
         // bereken score
     }
 
-    private static void beantwoordVraagConsole() {
-
-
-//        .beantwoordVraag()
+    private static void beantwoordVraagConsole(Spel spel) {
+        Scanner input = new Scanner(System.in);
+        spel.beantwoordVraag(input.next());
     }
 
     private static void controleerWoordConsole() {

@@ -1,73 +1,110 @@
 package nl.han.ooad.quebble.database;
 
-import nl.han.ooad.quebble.service.OpenVraag;
-import nl.han.ooad.quebble.service.OpenVraagAntwoord;
+import nl.han.ooad.quebble.service.*;
 
 import java.util.ArrayList;
 
 public class DatabaseVragen {
 
-    public void DatabaseVragen() {
-        getOpenVragen();
-    }
-
-    public ArrayList<OpenVraag> getOpenVragen(){
+    public ArrayList<OpenVraag> getOpenVragen() {
         ArrayList<OpenVraag> openVragen = new ArrayList<>();
-        OpenVraag openVraag1 = new OpenVraag(1, "Wat is 1 + 1?", "a", getOpenVraagAntwoorden(0));
-        OpenVraag openVraag2 = new OpenVraag(2, "Wat is 2 + 2?", "b", getOpenVraagAntwoorden(1));
-        OpenVraag openVraag3 = new OpenVraag(3, "Wat is 3 + 3?", "a", getOpenVraagAntwoorden(2));
-        OpenVraag openVraag4 = new OpenVraag(4, "Wat is 4 + 4?", "b", getOpenVraagAntwoorden(3));
-        OpenVraag openVraag5 = new OpenVraag(5, "Wat is 5 + 5?", "a", getOpenVraagAntwoorden(4));
-        OpenVraag openVraag6 = new OpenVraag(6, "Wat is 6 + 6?", "b", getOpenVraagAntwoorden(5));
-        openVragen.add(openVraag1);
-        openVragen.add(openVraag2);
-        openVragen.add(openVraag3);
-        openVragen.add(openVraag4);
-        openVragen.add(openVraag5);
-        openVragen.add(openVraag6);
+        openVragen.add(new OpenVraag(0, "Wat is 1 + 1?", "a", getOpenVraagAntwoorden(0)));
+        openVragen.add(new OpenVraag(1, "Wat is 2 + 2?", "b", getOpenVraagAntwoorden(1)));
+        openVragen.add(new OpenVraag(2, "Wat is 3 + 3?", "a", getOpenVraagAntwoorden(2)));
+        openVragen.add(new OpenVraag(3, "Wat is 4 + 4?", "b", getOpenVraagAntwoorden(3)));
+        openVragen.add(new OpenVraag(4, "Wat is 5 + 5?", "a", getOpenVraagAntwoorden(4)));
+        openVragen.add(new OpenVraag(5, "Wat is 6 + 6?", "b", getOpenVraagAntwoorden(5)));
+        openVragen.add(new OpenVraag(6, "Wat is 7 + 7?", "a", getOpenVraagAntwoorden(6)));
+        openVragen.add(new OpenVraag(7, "Wat is 8 + 8?", "a", getOpenVraagAntwoorden(7)));
         return openVragen;
     }
 
     //TODO simplefy
-    public ArrayList<OpenVraagAntwoord> getOpenVraagAntwoorden(int i){
+    public ArrayList<OpenVraagAntwoord> getOpenVraagAntwoorden(int vraag) {
         ArrayList<OpenVraagAntwoord> openVraagAntwoorden = new ArrayList<>();
 
-        ArrayList<OpenVraagAntwoord> openVraagAntwoorden1 = new ArrayList<>();
-        OpenVraagAntwoord openVraagAntwoord1 = new OpenVraagAntwoord("2");
-        OpenVraagAntwoord openVraagAntwoord11 = new OpenVraagAntwoord("twee");
-        openVraagAntwoorden1.add(openVraagAntwoord1);
-        openVraagAntwoorden1.add(openVraagAntwoord11);
+        OpenVraagAntwoord openVraagAntwoord11 = new OpenVraagAntwoord("2");
+        OpenVraagAntwoord openVraagAntwoord12 = new OpenVraagAntwoord("twee");
+        OpenVraagAntwoord openVraagAntwoord21 = new OpenVraagAntwoord("4");
+        OpenVraagAntwoord openVraagAntwoord22 = new OpenVraagAntwoord("vier");
+        OpenVraagAntwoord openVraagAntwoord31 = new OpenVraagAntwoord("6");
+        OpenVraagAntwoord openVraagAntwoord32 = new OpenVraagAntwoord("zes");
+        OpenVraagAntwoord openVraagAntwoord41 = new OpenVraagAntwoord("8");
+        OpenVraagAntwoord openVraagAntwoord42 = new OpenVraagAntwoord("acht");
+        OpenVraagAntwoord openVraagAntwoord51 = new OpenVraagAntwoord("10");
+        OpenVraagAntwoord openVraagAntwoord52 = new OpenVraagAntwoord("tien");
+        OpenVraagAntwoord openVraagAntwoord61 = new OpenVraagAntwoord("12");
+        OpenVraagAntwoord openVraagAntwoord62 = new OpenVraagAntwoord("twaalf");
 
-//        OpenVraagAntwoord openVraagAntwoord1 = new OpenVraagAntwoord();
-        OpenVraagAntwoord openVraagAntwoord2 = new OpenVraagAntwoord(new String[]{"4", "vier"});
-        OpenVraagAntwoord openVraagAntwoord3 = new OpenVraagAntwoord(new String[]{"6", "zes"});
-        OpenVraagAntwoord openVraagAntwoord4 = new OpenVraagAntwoord(new String[]{"8", "acht"});
-        OpenVraagAntwoord openVraagAntwoord5 = new OpenVraagAntwoord(new String[]{"10", "tien"});
-        OpenVraagAntwoord openVraagAntwoord6 = new OpenVraagAntwoord(new String[]{"12", "twaalf"});
-        openVraagAntwoorden.add(openVraagAntwoord1);
-        openVraagAntwoorden.add(openVraagAntwoord2);
-        openVraagAntwoorden.add(openVraagAntwoord3);
-        openVraagAntwoorden.add(openVraagAntwoord4);
-        openVraagAntwoorden.add(openVraagAntwoord5);
-        openVraagAntwoorden.add(openVraagAntwoord6);
-        return openVraagAntwoorden.get(i);
+        switch (vraag) {
+            case 0:
+                openVraagAntwoorden.add(openVraagAntwoord11);
+                openVraagAntwoorden.add(openVraagAntwoord12);
+                break;
+            case 1:
+                openVraagAntwoorden.add(openVraagAntwoord21);
+                openVraagAntwoorden.add(openVraagAntwoord22);
+                break;
+            case 2:
+                openVraagAntwoorden.add(openVraagAntwoord31);
+                openVraagAntwoorden.add(openVraagAntwoord32);
+                break;
+            case 3:
+                openVraagAntwoorden.add(openVraagAntwoord41);
+                openVraagAntwoorden.add(openVraagAntwoord42);
+                break;
+            case 4:
+                openVraagAntwoorden.add(openVraagAntwoord51);
+                openVraagAntwoorden.add(openVraagAntwoord52);
+                break;
+            case 5:
+                openVraagAntwoorden.add(openVraagAntwoord61);
+                openVraagAntwoorden.add(openVraagAntwoord62);
+                break;
+            case 6:
+                openVraagAntwoorden.add(new OpenVraagAntwoord("14"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("veertien"));
+                break;
+            case 7:
+                openVraagAntwoorden.add(new OpenVraagAntwoord("16"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("zestien"));
+                break;
+        }
+        return openVraagAntwoorden;
     }
 
-//    public ArrayList<Integer> getQuizzesId() {
-//        ArrayList<Integer> ids = new ArrayList<>();
-//        for (Quiz quiz : quizzes) {
-//            ids.add(quiz.getQuizId());
-//        }
-//        return ids;
-//    }
-//
-//    public Quiz getQuiz(int quizId) {
-//        for (Quiz quiz : quizzes) {
-//            if (quiz.getQuizId() == quizId) {
-//                return quiz;
-//            }
-//        }
-//        return null;
-//    }
+    public ArrayList<MeerkeuzeVraag> getMeerkeuzeVragen() {
+        ArrayList<MeerkeuzeVraag> MeerkeuzeVragen = new ArrayList<>();
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(0, "Welke kleur heeft de lucht?", "W", new MeerkeuzeAntwoord("Blauw"), getFouteAntwoorden(0)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(1, "Hoeveel jaar bestaat de HAN?", "H", new MeerkeuzeAntwoord("25"), getFouteAntwoorden(1)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(2, "Met welk cijfer wordt dit project beoordeeld?", "a", new MeerkeuzeAntwoord("10"), getFouteAntwoorden(2)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(3, "Waar woont Olav vanaf 1 februari?", "b", new MeerkeuzeAntwoord("Nijmegen"), getFouteAntwoorden(3)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(4, "Wanneer is de Open Dag voltijd van de HAN?", "a", new MeerkeuzeAntwoord("27 maart"), getFouteAntwoorden(4)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(5, "Waarom kies je voor HBO-ICT aan de HAN?", "b", new MeerkeuzeAntwoord("De Albert Heijn is op loop afstand"), getFouteAntwoorden(5)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(6, "In computerprogramma’s en op websites worden wel eens verborgen extra’s gestopt. Welke Engelse term wordt gebruikt voor dit soort extra’s?", "a", new MeerkeuzeAntwoord("Easter egg"), getFouteAntwoorden(6)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(7, "In welke provincie ligt Tiel?", "a", new MeerkeuzeAntwoord("Gelderland"), getFouteAntwoorden(7)));
+        return MeerkeuzeVragen;
+    }
 
+    private String[] getFouteAntwoorden(int vraag) {
+        switch (vraag) {
+            case 0:
+                return new String[]{"Blauw maar iets donkerder", "Andere kleur blauw", "Strikvraag de kleur heeft geen lucht"};
+            case 1:
+                return new String[]{"20", "15", "30"};
+            case 2:
+                return new String[]{"9.9", "1.0", "Is niet te beoordelen met een cijfer"};
+            case 3:
+                return new String[]{"Strik vraag, hij woont al een tijdje in Urk", "Bemmel", "Harare"};
+            case 4:
+                return new String[]{"Daar is de HAN mee gestopt", "10 maart", "2 juni"};
+            case 5:
+                return new String[]{"Leren in teams staat centraal", "Internationaal georiënteerd", "Praktisch onderzoek met informatica"};
+            case 6:
+                return new String[]{"Hidden feature", "Bug", "Geheimpje"};
+            case 7:
+                return new String[]{"Overijssel", "Tiel", "Noordrijn-Westfalen"};
+        }
+        return null;
+    }
 }
