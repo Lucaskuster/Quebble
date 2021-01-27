@@ -40,11 +40,6 @@ public class Quiz {
         return quiz;
     }
 
-    //TODO Let op deze TODO stond er al voor de herkansing, aanpassen in diagrammen en op private zetten, ook static gemaakt
-//    private static void selecteerQuiz(Speler speler){
-//
-//    }
-
     public int getQuizId() {
         return quizId;
     }

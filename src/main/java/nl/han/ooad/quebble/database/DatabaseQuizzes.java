@@ -11,8 +11,10 @@ public class DatabaseQuizzes {
     public void DatabaseQuizzes() {
         Quiz quiz1 = new Quiz(1, vragen());
         Quiz quiz2 = new Quiz(2, vragen());
+        Quiz quiz3 = new Quiz(3, vragen());
         quizzes.add(quiz1);
         quizzes.add(quiz2);
+        quizzes.add(quiz3);
     }
 
     public ArrayList<Integer> getQuizzesId() {

@@ -1,9 +1,15 @@
 package nl.han.ooad.quebble.service;
 
-public class Antwoord {
-//    private String antwoord;
-//
-//    public String getAntwoord() {
-//        return antwoord;
-//    }
+import java.util.ArrayList;
+
+public abstract class Antwoord {
+    private String[] juisteAntwoord;
+
+    public Antwoord (String[] juisteAntwoord){
+        this.juisteAntwoord = juisteAntwoord;
+    }
+
+    public String[] getAntwoord() {
+        return juisteAntwoord;
+    }
 }

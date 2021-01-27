@@ -46,6 +46,7 @@ public class Spel {
 
     public void speelQuiz() {
         this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
+        // TODO kan misschien weg
         this.score = new Score();
 
         // loop vragen laten zien
