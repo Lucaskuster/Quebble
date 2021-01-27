@@ -3,10 +3,11 @@ package nl.han.ooad.quebble.service;
 import java.util.ArrayList;
 
 public class Spel {
-    private Quiz geselecteerdeQuiz;
+    public Quiz geselecteerdeQuiz;
     public Speler speler;
     private Score score;
     private ArrayList<String> letters;
+    int vraagNummer;
 
     public void inloggen(String gebruikersnaam, String wachtwoord) {
         var speler = Speler.getSpeler(gebruikersnaam);
@@ -46,32 +47,50 @@ public class Spel {
 
     public void speelQuiz() {
         this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
+        // TODO kan misschien weg
         this.score = new Score();
-
-        // loop vragen laten zien
-
-
+        this.vraagNummer = 0;
+        this.letters = new ArrayList<>();
+        this.geselecteerdeQuiz.laatVraagZien(vraagNummer);
         // TODO nadenken over het aanmaken van een score, deze wordt nu aangemaakt in Spel en niet in Quiz.
-        // TODO dit hoeft niet meer, omdat spel een instantie is.
-//        var vragen = geselecteerdeQuiz.getVragen();
-
-//        var vraag = geselecteerdeQuiz.laatVraagZien();
-//        System.out.println(vraag);
     }
 
     public void beantwoordVraag(String antwoordSpeler) {
-
+        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler, vraagNummer));
+        vraagNummer++;
+        if(vraagNummer < 8) {
+            System.out.println();
+            System.out.println("---------------------------------");
+            geselecteerdeQuiz.laatVraagZien(vraagNummer);
+        }
     }
 
-    public void voegLetterToe(String letter) {
-
+    private void voegLetterToe(String letter) {
+        letters.add(letter);
     }
 
-//    public String laatLettersZien(){ // vgm moet dit void worden
-//
-//    }
+    public void laatLettersZien(){
+        String output = "";
+        for (String letter: letters) {
+            output = output.concat(letter + " - ");
+        }
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println("Dit zijn de letters van de goed beantwoordde vragen.");
+        System.out.println(output);
+        System.out.print("Een woord wat je hiermee kunt maken is: ");
+    }
 
     public void controleerWoord(String gegevenWoord) {
+        var woordControle = new WoordControle();
 
+        if(woordControle.woordControle(gegevenWoord)) {
+            System.out.println(gegevenWoord + " is een bestaand woord!");
+        } else {
+            System.out.println(gegevenWoord + " is een niet bestaand woord, helaas.");
+        }
+        System.out.println();
+        System.out.println("|||||||||||||||||||||||||||||||||||||||| - EINDE QUIZ - ||||||||||||||||||||||||||||||||||||||||");
+        System.out.println();
     }
 }

@@ -1,18 +1,42 @@
 package nl.han.ooad.quebble.database;
 
+import nl.han.ooad.quebble.service.MeerkeuzeVraag;
+import nl.han.ooad.quebble.service.OpenVraag;
 import nl.han.ooad.quebble.service.Quiz;
 import nl.han.ooad.quebble.service.Vraag;
 
 import java.util.ArrayList;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class DatabaseQuizzes {
     ArrayList<Quiz> quizzes = new ArrayList<>();
+    DatabaseVragen databaseVragen = new DatabaseVragen();
 
     public void DatabaseQuizzes() {
-        Quiz quiz1 = new Quiz(1, vragen());
-        Quiz quiz2 = new Quiz(2, vragen());
-        quizzes.add(quiz1);
-        quizzes.add(quiz2);
+        ArrayList<MeerkeuzeVraag> meerkeuzeVragen = databaseVragen.getMeerkeuzeVragen();
+        ArrayList<OpenVraag> openVragen = databaseVragen.getOpenVragen();
+
+        var meerkeuzeVragenQuiz1 = meerkeuzeVragen.stream()
+                .filter(element -> element.getVraagId() <=3).collect(Collectors.toCollection(ArrayList::new));
+        var meerkeuzeVragenQuiz2 = meerkeuzeVragen.stream()
+                .filter(element -> element.getVraagId() > 3).collect(Collectors.toCollection(ArrayList::new));
+
+        var openVragenQuiz1 = openVragen.stream()
+                .filter(element -> element.getVraagId() <=3).collect(Collectors.toCollection(ArrayList::new));
+        var openVragenQuiz2 = openVragen.stream()
+                .filter(element -> element.getVraagId() > 3).collect(Collectors.toCollection(ArrayList::new));
+
+        ArrayList<Vraag> vragenQuiz1 = new ArrayList<>();
+        vragenQuiz1.addAll(meerkeuzeVragenQuiz1);
+        vragenQuiz1.addAll(openVragenQuiz1);
+
+        ArrayList<Vraag> vragenQuiz2 = new ArrayList<>();
+        vragenQuiz2.addAll(meerkeuzeVragenQuiz2);
+        vragenQuiz2.addAll(openVragenQuiz2);
+
+        quizzes.add(new Quiz(1, vragenQuiz1));
+        quizzes.add(new Quiz(2, vragenQuiz2));
     }
 
     public ArrayList<Integer> getQuizzesId() {
@@ -30,10 +54,5 @@ public class DatabaseQuizzes {
             }
         }
         return null;
-    }
-
-    private ArrayList<Vraag> vragen() {
-        ArrayList<Vraag> vragen = new ArrayList<>();
-        return vragen;
     }
 }
