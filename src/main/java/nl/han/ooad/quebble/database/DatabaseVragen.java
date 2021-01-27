@@ -8,14 +8,14 @@ public class DatabaseVragen {
 
     public ArrayList<OpenVraag> getOpenVragen() {
         ArrayList<OpenVraag> openVragen = new ArrayList<>();
-        openVragen.add(new OpenVraag(0, "Wat is 1 + 1?", "a", getOpenVraagAntwoorden(0)));
-        openVragen.add(new OpenVraag(1, "Wat is 2 + 2?", "b", getOpenVraagAntwoorden(1)));
-        openVragen.add(new OpenVraag(2, "Wat is 3 + 3?", "a", getOpenVraagAntwoorden(2)));
-        openVragen.add(new OpenVraag(3, "Wat is 4 + 4?", "b", getOpenVraagAntwoorden(3)));
-        openVragen.add(new OpenVraag(4, "Wat is 5 + 5?", "a", getOpenVraagAntwoorden(4)));
-        openVragen.add(new OpenVraag(5, "Wat is 6 + 6?", "b", getOpenVraagAntwoorden(5)));
-        openVragen.add(new OpenVraag(6, "Wat is 7 + 7?", "a", getOpenVraagAntwoorden(6)));
-        openVragen.add(new OpenVraag(7, "Wat is 8 + 8?", "a", getOpenVraagAntwoorden(7)));
+        openVragen.add(new OpenVraag(0, "Wat is 1 + 1?", "N", getOpenVraagAntwoorden(0)));
+        openVragen.add(new OpenVraag(1, "Wat is 2 + 2?", "E", getOpenVraagAntwoorden(1)));
+        openVragen.add(new OpenVraag(2, "Wat is 3 + 3?", "R", getOpenVraagAntwoorden(2)));
+        openVragen.add(new OpenVraag(3, "Wat is 4 + 4?", "S", getOpenVraagAntwoorden(3)));
+        openVragen.add(new OpenVraag(4, "Wat is 5 + 5?", "S", getOpenVraagAntwoorden(4)));
+        openVragen.add(new OpenVraag(5, "Wat is 6 + 6?", "C", getOpenVraagAntwoorden(5)));
+        openVragen.add(new OpenVraag(6, "Wat is 7 + 7?", "H", getOpenVraagAntwoorden(6)));
+        openVragen.add(new OpenVraag(7, "Wat is 8 + 8?", "E", getOpenVraagAntwoorden(7)));
         return openVragen;
     }
 
@@ -75,14 +75,14 @@ public class DatabaseVragen {
 
     public ArrayList<MeerkeuzeVraag> getMeerkeuzeVragen() {
         ArrayList<MeerkeuzeVraag> MeerkeuzeVragen = new ArrayList<>();
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(0, "Welke kleur heeft de lucht?", "W", new MeerkeuzeAntwoord("Blauw"), getFouteAntwoorden(0)));
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(1, "Hoeveel jaar bestaat de HAN?", "H", new MeerkeuzeAntwoord("25"), getFouteAntwoorden(1)));
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(2, "Met welk cijfer wordt dit project beoordeeld?", "a", new MeerkeuzeAntwoord("10"), getFouteAntwoorden(2)));
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(3, "Waar woont Olav vanaf 1 februari?", "b", new MeerkeuzeAntwoord("Nijmegen"), getFouteAntwoorden(3)));
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(4, "Wanneer is de Open Dag voltijd van de HAN?", "a", new MeerkeuzeAntwoord("27 maart"), getFouteAntwoorden(4)));
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(5, "Waarom kies je voor HBO-ICT aan de HAN?", "b", new MeerkeuzeAntwoord("De Albert Heijn is op loop afstand"), getFouteAntwoorden(5)));
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(6, "In computerprogramma’s en op websites worden wel eens verborgen extra’s gestopt. Welke Engelse term wordt gebruikt voor dit soort extra’s?", "a", new MeerkeuzeAntwoord("Easter egg"), getFouteAntwoorden(6)));
-        MeerkeuzeVragen.add(new MeerkeuzeVraag(7, "In welke provincie ligt Tiel?", "a", new MeerkeuzeAntwoord("Gelderland"), getFouteAntwoorden(7)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(0, "Welke kleur heeft de lucht?",                    "S", new MeerkeuzeAntwoord("Blauw"), getFouteAntwoorden(0)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(1, "Hoeveel jaar bestaat de HAN?",                   "C", new MeerkeuzeAntwoord("25"), getFouteAntwoorden(1)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(2, "Met welk cijfer wordt dit project beoordeeld?",  "A", new MeerkeuzeAntwoord("10"), getFouteAntwoorden(2)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(3, "Waar woont Olav vanaf 1 februari?",              "N", new MeerkeuzeAntwoord("Nijmegen"), getFouteAntwoorden(3)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(4, "Wanneer is de Open Dag voltijd van de HAN?",     "L", new MeerkeuzeAntwoord("27 maart"), getFouteAntwoorden(4)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(5, "Waarom kies je voor HBO-ICT aan de HAN?",        "P", new MeerkeuzeAntwoord("De Albert Heijn is op loop afstand"), getFouteAntwoorden(5)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(6, "In computerprogramma’s en op websites worden wel eens verborgen extra’s gestopt. Welke Engelse term wordt gebruikt voor dit soort extra’s?", "E", new MeerkeuzeAntwoord("Easter egg"), getFouteAntwoorden(6)));
+        MeerkeuzeVragen.add(new MeerkeuzeVraag(7, "In welke provincie ligt Tiel?",                  "N", new MeerkeuzeAntwoord("Gelderland"), getFouteAntwoorden(7)));
         return MeerkeuzeVragen;
     }
 

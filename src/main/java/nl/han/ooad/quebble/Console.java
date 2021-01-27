@@ -93,12 +93,12 @@ public class Console {
             beantwoordVraagConsole(spel);
         }
 
-        // voeg aantal correcte vragen toe aan score
-        // laat letters zien
+        // voeg aantal correcte vragen toe aan score    /\
+        // laat letters zien                            /\
 
         spel.laatLettersZien();
 
-        // maak woord
+        // maak woord                                      /\
         // controleer woord
         controleerWoordConsole(spel);
 
@@ -107,11 +107,18 @@ public class Console {
 
     private static void beantwoordVraagConsole(Spel spel) {
         Scanner input = new Scanner(System.in);
-        spel.beantwoordVraag(input.next());
+        spel.beantwoordVraag(input.nextLine());
     }
 
     private static void controleerWoordConsole(Spel spel) {
         Scanner input = new Scanner(System.in);
         spel.controleerWoord(input.next());
     }
+
+    //TODO controleren dat de juiste letters zijn gebruikt.
+    //TODO todo's weg werken
+    //TODO code opschonen
+    //TODO score
+    //TODO library uitbreiden
+    //TODO als quiz 2 gespeeld is weer beginnen bij quiz 1.
 }

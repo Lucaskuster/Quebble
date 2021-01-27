@@ -82,7 +82,13 @@ public class Spel {
     }
 
     public void controleerWoord(String gegevenWoord) {
-        System.out.println("Dat is correct!! ");
+        var woordControle = new WoordControle();
+
+        if(woordControle.woordControle(gegevenWoord)) {
+            System.out.println(gegevenWoord + " is een bestaand woord!");
+        } else {
+            System.out.println(gegevenWoord + " is een niet bestaand woord, helaas.");
+        }
         System.out.println();
         System.out.println("|||||||||||||||||||||||||||||||||||||||| - EINDE QUIZ - ||||||||||||||||||||||||||||||||||||||||");
         System.out.println();
