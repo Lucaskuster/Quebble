@@ -62,4 +62,5 @@ public class Speler {
     public void verminderCredits() {
         this.credits = credits - KOSTEN_QUIZ;
     }
+
 }

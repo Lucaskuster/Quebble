@@ -115,10 +115,18 @@ public class Console {
         spel.controleerWoord(input.next());
     }
 
-    //TODO controleren dat de juiste letters zijn gebruikt.
+    //TODO controleren dat de juiste letters zijn gebruikt. CHECK
+
+
+    //TODO als quiz 2 gespeeld is weer beginnen bij quiz 1.  CHECK
+
     //TODO todo's weg werken
+    //TODO gelijk maken aan diagrammen
+
+
     //TODO code opschonen
-    //TODO score
-    //TODO library uitbreiden
-    //TODO als quiz 2 gespeeld is weer beginnen bij quiz 1.
+    //TODO score wegwerken of opschonen
+    //TODO library wegwerken of opschonen
+
+    // TODO moeten we niet kijken naar het soort antwoord? dus bij een meerkeuze ook meerdere antwoorden goed laten zijn?
 }

@@ -16,9 +16,13 @@ public class Quiz {
         this.vragen = vragen;
     }
 
+    // TODO olav laten zien en sequence diagrammen?
+    public static void laadQuizzes(){
+        databaseQuizzes.DatabaseQuizzes();
+    }
+
     // TODO op dit moment zijn de methode's getEenQuiz en selecteerQuiz methode's met namen die ongeveer hetzelfde betekenen. Dit heb ik aangepast
     public static Quiz getEenQuiz(Speler speler) {
-        databaseQuizzes.DatabaseQuizzes();
 
         var gespeeldeQuizzesId = speler.getGespeeldeQuizzes();
         var beschikbareQuizzesId = databaseQuizzes.getQuizzesId();
@@ -29,6 +33,13 @@ public class Quiz {
         var quiz = databaseQuizzes.getQuiz(quizzes.get(0));
 
         speler.addGespeeldeQuizzes(quiz.getQuizId());
+
+        System.out.println(gespeeldeQuizzesId.size());
+        System.out.println(" + ");
+        System.out.println(beschikbareQuizzesId.size());
+        if (gespeeldeQuizzesId.size() == beschikbareQuizzesId.size()){
+            gespeeldeQuizzesId.clear();
+        }
 
         // TODO diagrammen aanpassen, want ik roep deze later aan als in het sequence diagram.
         speler.verminderCredits();

@@ -2,7 +2,6 @@ package nl.han.ooad.quebble.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class Spel {
@@ -31,6 +30,8 @@ public class Spel {
                 }
                 System.out.println("gespeeld.");
                 System.out.println();
+
+                Quiz.laadQuizzes();
             } else {
                 System.out.println("Wachtwoord onjuist");
             }
@@ -59,7 +60,7 @@ public class Spel {
     }
 
     public void beantwoordVraag(String antwoordSpeler) {
-        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler, vraagNummer));
+        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler.trim().toLowerCase(), vraagNummer));
         vraagNummer++;
         if (vraagNummer < 8) {
             System.out.println();
@@ -87,8 +88,8 @@ public class Spel {
     public void controleerWoord(String gegevenWoord) {
         var woordControle = new WoordControle();
 
-        if (controleerLetters(gegevenWoord)) {
-            if (woordControle.woordControle(gegevenWoord)) {
+        if (controleerLetters(gegevenWoord.trim().toLowerCase())) {
+            if (woordControle.woordControle(gegevenWoord.trim().toLowerCase())) {
                 System.out.println(gegevenWoord + " is een bestaand woord!");
             } else {
                 System.out.println(gegevenWoord + " is een niet bestaand woord, helaas.");
@@ -104,13 +105,16 @@ public class Spel {
     private boolean controleerLetters(String gegevenWoord){
         var woordNaarArray = Arrays.stream(gegevenWoord.split("")).collect(Collectors.toCollection(ArrayList::new));
 
-        woordNaarArray.removeAll(letters);
+        if(gegevenWoord.length() > letters.size()){
+            return false;
+        }
 
-//        for (String letterUitWoord : lettersUitWoord) {
-//            if (letters.stream().forEach(element -> element.toLowerCase().equals(letterUitWoord))) {
-//                return false;
-//            }
-//        }
-        return true;
+        for (String beschikbareLetter: letters) {
+            woordNaarArray.remove(beschikbareLetter);
+        }
+
+        return woordNaarArray.isEmpty();
+
     }
+
 }
