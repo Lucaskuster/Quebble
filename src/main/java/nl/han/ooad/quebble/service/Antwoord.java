@@ -1,13 +1,13 @@
 package nl.han.ooad.quebble.service;
 
 public abstract class Antwoord {
-    private final String juisteAntwoord;
+    private final String JUISTE_ANTWOORD;
 
     public Antwoord (String juisteAntwoord){
-        this.juisteAntwoord = juisteAntwoord;
+        this.JUISTE_ANTWOORD = juisteAntwoord;
     }
 
     public String getAntwoord() {
-        return juisteAntwoord;
+        return JUISTE_ANTWOORD;
     }
 }

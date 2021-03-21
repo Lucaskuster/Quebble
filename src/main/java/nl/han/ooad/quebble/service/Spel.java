@@ -8,7 +8,7 @@ public class Spel {
     public Quiz geselecteerdeQuiz;
     public Speler speler;
     private ArrayList<String> letters;
-    int vraagNummer;
+    int vraagId;
 
     public void inloggen(String gebruikersnaam, String wachtwoord) {
         var speler = Speler.getSpeler(gebruikersnaam);
@@ -48,18 +48,20 @@ public class Spel {
 
     public void speelQuiz() {
         this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
-        this.vraagNummer = 0;
+        this.vraagId = 0;
         this.letters = new ArrayList<>();
-        this.geselecteerdeQuiz.laatVraagZien(vraagNummer);
+        this.geselecteerdeQuiz.laatVraagZien(vraagId);
     }
 
     public void beantwoordVraag(String antwoordSpeler) {
-        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler.trim().toLowerCase(), vraagNummer));
-        vraagNummer++;
-        if (vraagNummer < 8) {
+        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler.trim().toLowerCase(), vraagId));
+        vraagId++;
+        if (vraagId < 8) {
             System.out.println();
             System.out.println("---------------------------------");
-            geselecteerdeQuiz.laatVraagZien(vraagNummer);
+            geselecteerdeQuiz.laatVraagZien(vraagId);
+        } else {
+            laatLettersZien();
         }
     }
 
@@ -67,7 +69,7 @@ public class Spel {
         letters.add(letter);
     }
 
-    public void laatLettersZien() {
+    private void laatLettersZien() {
         String output = "";
         for (String letter : letters) {
             output = output.concat(letter + " - ");

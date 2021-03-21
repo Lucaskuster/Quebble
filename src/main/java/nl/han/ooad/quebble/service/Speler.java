@@ -5,24 +5,24 @@ import nl.han.ooad.quebble.database.DatabaseSpelers;
 import java.util.ArrayList;
 
 public class Speler {
-    private static final DatabaseSpelers databaseSpelers = new DatabaseSpelers();
-    private final String gebruikersnaam;
-    private final String wachtwoord;
+    private static final DatabaseSpelers DATABASE_SPELERS = new DatabaseSpelers();
+    private final String GEBRUIKERSNAAM;
+    private final String WACHTWOORD;
     private int credits;
-    private final ArrayList<Integer> gespeeldeQuizzes;
+    private ArrayList<Integer> gespeeldeQuizzes;
 
     private final int START_CREDITS = 1000;
     private final int KOSTEN_QUIZ = 40;
 
     public Speler(String gebruikersnaam, String wachtwoord) {
-        this.gebruikersnaam = gebruikersnaam;
-        this.wachtwoord = wachtwoord;
+        this.GEBRUIKERSNAAM = gebruikersnaam;
+        this.WACHTWOORD = wachtwoord;
         this.gespeeldeQuizzes =  new ArrayList<>();
         this.credits = START_CREDITS;
     }
 
     public static Speler getSpeler(String gebruikersnaam){
-        ArrayList<Speler> spelers = databaseSpelers.getSpelers();
+        ArrayList<Speler> spelers = DATABASE_SPELERS.getSpelers();
         for (Speler speler:spelers){
             if (gebruikersnaam.equals(speler.getGebruikersnaam())){
                 return speler;
@@ -34,7 +34,7 @@ public class Speler {
     public static void addSpeler(String gebruikersnaam, String wachtwoord){
         if (getSpeler(gebruikersnaam) == null){
             var speler = new Speler(gebruikersnaam, wachtwoord);
-            databaseSpelers.addSpeler(speler);
+            DATABASE_SPELERS.addSpeler(speler);
         }
     }
 
@@ -47,11 +47,11 @@ public class Speler {
     }
 
     public String getGebruikersnaam() {
-        return gebruikersnaam;
+        return GEBRUIKERSNAAM;
     }
 
     public String getWachtwoord() {
-        return wachtwoord;
+        return WACHTWOORD;
     }
 
     public int getCredits() {

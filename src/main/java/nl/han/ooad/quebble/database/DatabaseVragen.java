@@ -19,47 +19,33 @@ public class DatabaseVragen {
         return openVragen;
     }
 
-    //TODO simplefy
     public ArrayList<OpenVraagAntwoord> getOpenVraagAntwoorden(int vraag) {
         ArrayList<OpenVraagAntwoord> openVraagAntwoorden = new ArrayList<>();
 
-        OpenVraagAntwoord openVraagAntwoord11 = new OpenVraagAntwoord("2");
-        OpenVraagAntwoord openVraagAntwoord12 = new OpenVraagAntwoord("twee");
-        OpenVraagAntwoord openVraagAntwoord21 = new OpenVraagAntwoord("4");
-        OpenVraagAntwoord openVraagAntwoord22 = new OpenVraagAntwoord("vier");
-        OpenVraagAntwoord openVraagAntwoord31 = new OpenVraagAntwoord("6");
-        OpenVraagAntwoord openVraagAntwoord32 = new OpenVraagAntwoord("zes");
-        OpenVraagAntwoord openVraagAntwoord41 = new OpenVraagAntwoord("8");
-        OpenVraagAntwoord openVraagAntwoord42 = new OpenVraagAntwoord("acht");
-        OpenVraagAntwoord openVraagAntwoord51 = new OpenVraagAntwoord("10");
-        OpenVraagAntwoord openVraagAntwoord52 = new OpenVraagAntwoord("tien");
-        OpenVraagAntwoord openVraagAntwoord61 = new OpenVraagAntwoord("12");
-        OpenVraagAntwoord openVraagAntwoord62 = new OpenVraagAntwoord("twaalf");
-
         switch (vraag) {
             case 0:
-                openVraagAntwoorden.add(openVraagAntwoord11);
-                openVraagAntwoorden.add(openVraagAntwoord12);
+                openVraagAntwoorden.add(new OpenVraagAntwoord("2"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("twee"));
                 break;
             case 1:
-                openVraagAntwoorden.add(openVraagAntwoord21);
-                openVraagAntwoorden.add(openVraagAntwoord22);
+                openVraagAntwoorden.add(new OpenVraagAntwoord("4"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("vier"));
                 break;
             case 2:
-                openVraagAntwoorden.add(openVraagAntwoord31);
-                openVraagAntwoorden.add(openVraagAntwoord32);
+                openVraagAntwoorden.add(new OpenVraagAntwoord("6"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("zes"));
                 break;
             case 3:
-                openVraagAntwoorden.add(openVraagAntwoord41);
-                openVraagAntwoorden.add(openVraagAntwoord42);
+                openVraagAntwoorden.add(new OpenVraagAntwoord("8"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("acht"));
                 break;
             case 4:
-                openVraagAntwoorden.add(openVraagAntwoord51);
-                openVraagAntwoorden.add(openVraagAntwoord52);
+                openVraagAntwoorden.add(new OpenVraagAntwoord("10"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("tien"));
                 break;
             case 5:
-                openVraagAntwoorden.add(openVraagAntwoord61);
-                openVraagAntwoorden.add(openVraagAntwoord62);
+                openVraagAntwoorden.add(new OpenVraagAntwoord("12"));
+                openVraagAntwoorden.add(new OpenVraagAntwoord("twaalf"));
                 break;
             case 6:
                 openVraagAntwoorden.add(new OpenVraagAntwoord("14"));

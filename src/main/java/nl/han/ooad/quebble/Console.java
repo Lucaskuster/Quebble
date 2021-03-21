@@ -6,11 +6,6 @@ import java.util.Scanner;
 
 public class Console {
 
-    //TODO controleren of het gebruik van static klassen ook is opgenomen in de documenten
-    //TODO spel is niet static dus het klasse diagram moet aangepast worden, in console gebruiken we telkens een instantie spel
-
-    //TODO meer soutjes naar de 'front-end' krijgen
-
     public static void main(String[] args) {
         var console = new Console();
         Spel spel = new Spel();
@@ -72,14 +67,12 @@ public class Console {
         System.out.println("Veel plezier bij het spelen van de Quiz!");
         System.out.println();
 
-        //TODO speelSpel in de documentatie veranderen naar speelQuiz.
         spel.speelQuiz();
 
         for(int i = 0; i < 8; i++) {
             beantwoordVraagConsole(spel);
         }
 
-        spel.laatLettersZien();
         controleerWoordConsole(spel);
     }
 
@@ -93,17 +86,4 @@ public class Console {
         spel.controleerWoord(input.next());
     }
 
-
-    //TODO todo's weg werken
-    //TODO gelijk maken aan diagrammen
-
-
-    //TODO code opschonen
-    //TODO score wegwerken of opschonen
-    //TODO library wegwerken of opschonen
-
-    // TODO moeten we niet kijken naar het soort antwoord? dus bij een meerkeuze ook meerdere antwoorden goed laten zijn?
-
-
-    // TODO Olav, ik heb in deze versie ook alle methoden weggehaald die niet in gebruik waren.
 }
