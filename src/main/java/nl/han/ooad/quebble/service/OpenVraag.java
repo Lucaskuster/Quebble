@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class OpenVraag extends Vraag {
 
-    private ArrayList<OpenVraagAntwoord> antwoorden;
+    private final ArrayList<OpenVraagAntwoord> antwoorden;
 
     public OpenVraag(int vraagId, String vraag, String letter, ArrayList<OpenVraagAntwoord> antwoorden) {
         super(vraagId, vraag, letter);
@@ -13,10 +13,6 @@ public class OpenVraag extends Vraag {
 
     public ArrayList<OpenVraagAntwoord> getAntwoorden() {
         return antwoorden;
-    }
-
-    public void setAntwoorden(ArrayList<OpenVraagAntwoord> antwoorden) {
-        this.antwoorden = antwoorden;
     }
 
 }

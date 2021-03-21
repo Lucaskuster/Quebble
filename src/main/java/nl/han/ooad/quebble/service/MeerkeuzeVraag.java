@@ -1,9 +1,9 @@
 package nl.han.ooad.quebble.service;
 
 public class MeerkeuzeVraag extends Vraag{
-    private MeerkeuzeAntwoord antwoord;
+    private final MeerkeuzeAntwoord antwoord;
 
-    private String[] fouteAntwoorden;
+    private final String[] fouteAntwoorden;
 
     public MeerkeuzeVraag(int vraagId, String vraag, String letter, MeerkeuzeAntwoord antwoord, String[] fouteAntwoorden) {
         super(vraagId, vraag, letter);
@@ -15,15 +15,7 @@ public class MeerkeuzeVraag extends Vraag{
         return antwoord;
     }
 
-    public void setAntwoord(MeerkeuzeAntwoord antwoord) {
-        this.antwoord = antwoord;
-    }
-
     public String[] getFouteAntwoorden() {
         return fouteAntwoorden;
-    }
-
-    public void setFouteAntwoorden(String[] fouteAntwoorden) {
-        this.fouteAntwoorden = fouteAntwoorden;
     }
 }

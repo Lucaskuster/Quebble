@@ -5,11 +5,11 @@ import nl.han.ooad.quebble.database.DatabaseSpelers;
 import java.util.ArrayList;
 
 public class Speler {
-    private static DatabaseSpelers databaseSpelers = new DatabaseSpelers();
-    private String gebruikersnaam;
-    private String wachtwoord;
+    private static final DatabaseSpelers databaseSpelers = new DatabaseSpelers();
+    private final String gebruikersnaam;
+    private final String wachtwoord;
     private int credits;
-    private ArrayList<Integer> gespeeldeQuizzes;
+    private final ArrayList<Integer> gespeeldeQuizzes;
 
     private final int START_CREDITS = 1000;
     private final int KOSTEN_QUIZ = 40;
@@ -22,7 +22,6 @@ public class Speler {
     }
 
     public static Speler getSpeler(String gebruikersnaam){
-        databaseSpelers.DatabaseSpelers();
         ArrayList<Speler> spelers = databaseSpelers.getSpelers();
         for (Speler speler:spelers){
             if (gebruikersnaam.equals(speler.getGebruikersnaam())){

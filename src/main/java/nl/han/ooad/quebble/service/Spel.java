@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 public class Spel {
     public Quiz geselecteerdeQuiz;
     public Speler speler;
-    private Score score;
     private ArrayList<String> letters;
     int vraagNummer;
 
@@ -30,8 +29,6 @@ public class Spel {
                 }
                 System.out.println("gespeeld.");
                 System.out.println();
-
-                Quiz.laadQuizzes();
             } else {
                 System.out.println("Wachtwoord onjuist");
             }
@@ -51,12 +48,9 @@ public class Spel {
 
     public void speelQuiz() {
         this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
-        // TODO kan misschien weg
-        this.score = new Score();
         this.vraagNummer = 0;
         this.letters = new ArrayList<>();
         this.geselecteerdeQuiz.laatVraagZien(vraagNummer);
-        // TODO nadenken over het aanmaken van een score, deze wordt nu aangemaakt in Spel en niet in Quiz.
     }
 
     public void beantwoordVraag(String antwoordSpeler) {
@@ -102,19 +96,18 @@ public class Spel {
         System.out.println();
     }
 
-    private boolean controleerLetters(String gegevenWoord){
+    private boolean controleerLetters(String gegevenWoord) {
         var woordNaarArray = Arrays.stream(gegevenWoord.split("")).collect(Collectors.toCollection(ArrayList::new));
 
-        if(gegevenWoord.length() > letters.size()){
+        if (gegevenWoord.length() > letters.size()) {
             return false;
         }
 
-        for (String beschikbareLetter: letters) {
+        for (String beschikbareLetter : letters) {
             woordNaarArray.remove(beschikbareLetter);
         }
 
         return woordNaarArray.isEmpty();
 
     }
-
 }

@@ -16,11 +16,6 @@ public class Quiz {
         this.vragen = vragen;
     }
 
-    // TODO olav laten zien en sequence diagrammen?
-    public static void laadQuizzes(){
-        databaseQuizzes.DatabaseQuizzes();
-    }
-
     // TODO op dit moment zijn de methode's getEenQuiz en selecteerQuiz methode's met namen die ongeveer hetzelfde betekenen. Dit heb ik aangepast
     public static Quiz getEenQuiz(Speler speler) {
 
@@ -34,9 +29,6 @@ public class Quiz {
 
         speler.addGespeeldeQuizzes(quiz.getQuizId());
 
-        System.out.println(gespeeldeQuizzesId.size());
-        System.out.println(" + ");
-        System.out.println(beschikbareQuizzesId.size());
         if (gespeeldeQuizzesId.size() == beschikbareQuizzesId.size()){
             gespeeldeQuizzesId.clear();
         }
