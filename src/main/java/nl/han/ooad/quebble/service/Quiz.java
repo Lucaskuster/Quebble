@@ -16,9 +16,7 @@ public class Quiz {
         this.vragen = vragen;
     }
 
-    // TODO op dit moment zijn de methode's getEenQuiz en selecteerQuiz methode's met namen die ongeveer hetzelfde betekenen. Dit heb ik aangepast
     public static Quiz getEenQuiz(Speler speler) {
-        databaseQuizzes.DatabaseQuizzes();
 
         var gespeeldeQuizzesId = speler.getGespeeldeQuizzes();
         var beschikbareQuizzesId = databaseQuizzes.getQuizzesId();
@@ -30,7 +28,10 @@ public class Quiz {
 
         speler.addGespeeldeQuizzes(quiz.getQuizId());
 
-        // TODO diagrammen aanpassen, want ik roep deze later aan als in het sequence diagram.
+        if (gespeeldeQuizzesId.size() == beschikbareQuizzesId.size()){
+            gespeeldeQuizzesId.clear();
+        }
+
         speler.verminderCredits();
 
         return quiz;

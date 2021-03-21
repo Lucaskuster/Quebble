@@ -1,47 +1,27 @@
 package nl.han.ooad.quebble.service;
 
 public abstract class Vraag {
-    private int vraagId;
-    private String vraag;
-    private String letter;
-    private boolean actief;
+    private final int VRAAG_ID;
+    private final String VRAAG;
+    private final String LETTER;
 
     public Vraag(int vraagId, String vraag, String letter){
-        this.vraagId = vraagId;
-        this.vraag = vraag;
-        this.letter = letter;
-        this.actief = true;
+        this.VRAAG_ID = vraagId;
+        this.VRAAG = vraag;
+        this.LETTER = letter;
     }
 
     public int getVraagId() {
-        return vraagId;
-    }
-
-    public void setVraagId(int vraagId) {
-        this.vraagId = vraagId;
+        return VRAAG_ID;
     }
 
     public String getVraag() {
-        return vraag;
-    }
-
-    public void setVraag(String vraag) {
-        this.vraag = vraag;
+        return VRAAG;
     }
 
     public String getLetter() {
-        return letter;
+        return LETTER;
     }
 
-    public void setLetter(String letter) {
-        this.letter = letter;
-    }
 
-    public boolean isActief() {
-        return actief;
-    }
-
-    public void setActief(boolean actief) {
-        this.actief = actief;
-    }
 }

@@ -1,13 +1,14 @@
 package nl.han.ooad.quebble.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Spel {
     public Quiz geselecteerdeQuiz;
     public Speler speler;
-    private Score score;
     private ArrayList<String> letters;
-    int vraagNummer;
+    int vraagId;
 
     public void inloggen(String gebruikersnaam, String wachtwoord) {
         var speler = Speler.getSpeler(gebruikersnaam);
@@ -47,21 +48,20 @@ public class Spel {
 
     public void speelQuiz() {
         this.geselecteerdeQuiz = Quiz.getEenQuiz(speler);
-        // TODO kan misschien weg
-        this.score = new Score();
-        this.vraagNummer = 0;
+        this.vraagId = 0;
         this.letters = new ArrayList<>();
-        this.geselecteerdeQuiz.laatVraagZien(vraagNummer);
-        // TODO nadenken over het aanmaken van een score, deze wordt nu aangemaakt in Spel en niet in Quiz.
+        this.geselecteerdeQuiz.laatVraagZien(vraagId);
     }
 
     public void beantwoordVraag(String antwoordSpeler) {
-        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler, vraagNummer));
-        vraagNummer++;
-        if(vraagNummer < 8) {
+        voegLetterToe(this.geselecteerdeQuiz.controleerAntwoord(antwoordSpeler.trim().toLowerCase(), vraagId));
+        vraagId++;
+        if (vraagId < 8) {
             System.out.println();
             System.out.println("---------------------------------");
-            geselecteerdeQuiz.laatVraagZien(vraagNummer);
+            geselecteerdeQuiz.laatVraagZien(vraagId);
+        } else {
+            laatLettersZien();
         }
     }
 
@@ -69,9 +69,9 @@ public class Spel {
         letters.add(letter);
     }
 
-    public void laatLettersZien(){
+    private void laatLettersZien() {
         String output = "";
-        for (String letter: letters) {
+        for (String letter : letters) {
             output = output.concat(letter + " - ");
         }
         System.out.println();
@@ -84,13 +84,32 @@ public class Spel {
     public void controleerWoord(String gegevenWoord) {
         var woordControle = new WoordControle();
 
-        if(woordControle.woordControle(gegevenWoord)) {
-            System.out.println(gegevenWoord + " is een bestaand woord!");
+        if (controleerLetters(gegevenWoord.trim().toLowerCase())) {
+            if (woordControle.woordControle(gegevenWoord.trim().toLowerCase())) {
+                System.out.println(gegevenWoord + " is een bestaand woord!");
+            } else {
+                System.out.println(gegevenWoord + " is een niet bestaand woord, helaas.");
+            }
         } else {
-            System.out.println(gegevenWoord + " is een niet bestaand woord, helaas.");
+            System.out.println("Niet de juiste letters gebruikt.");
         }
         System.out.println();
         System.out.println("|||||||||||||||||||||||||||||||||||||||| - EINDE QUIZ - ||||||||||||||||||||||||||||||||||||||||");
         System.out.println();
+    }
+
+    private boolean controleerLetters(String gegevenWoord) {
+        var woordNaarArray = Arrays.stream(gegevenWoord.split("")).collect(Collectors.toCollection(ArrayList::new));
+
+        if (gegevenWoord.length() > letters.size()) {
+            return false;
+        }
+
+        for (String beschikbareLetter : letters) {
+            woordNaarArray.remove(beschikbareLetter);
+        }
+
+        return woordNaarArray.isEmpty();
+
     }
 }

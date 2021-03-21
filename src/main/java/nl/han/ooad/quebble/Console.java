@@ -6,14 +6,6 @@ import java.util.Scanner;
 
 public class Console {
 
-    //TODO controleren of het gebruik van static klassen ook is opgenomen in de documenten
-
-    //TODO spel is niet static dus het klasse diagram moet aangepast worden, in console gebruiken we telkens een instantie spel
-
-    //TODO na het spelen van 3 quizzen krijg je een foutmelding, omdat er maar 2 quizzen zijn.
-
-    //TODO meer soutjes naar de 'front-end' krijgen
-
     public static void main(String[] args) {
         var console = new Console();
         Spel spel = new Spel();
@@ -75,34 +67,13 @@ public class Console {
         System.out.println("Veel plezier bij het spelen van de Quiz!");
         System.out.println();
 
-        // haal een quiz op                     /\
-            // maak een score                   /\
-            // verminder credits                /\
-            // voeg de gespeelde quiz toe aan gespeelde quizzes /\
-            // start een timer                  /\
-        //TODO speelSpel in de documentatie veranderen naar speelQuiz.
         spel.speelQuiz();
-
-        // laat vraag zien          /\
-        // beantwoord de vraag      /\
-        // controleer antwoord      /\
-        // voeg letter toe          /\
-        // herhaal 8 keer           /\
 
         for(int i = 0; i < 8; i++) {
             beantwoordVraagConsole(spel);
         }
 
-        // voeg aantal correcte vragen toe aan score    /\
-        // laat letters zien                            /\
-
-        spel.laatLettersZien();
-
-        // maak woord                                      /\
-        // controleer woord
         controleerWoordConsole(spel);
-
-        // bereken score
     }
 
     private static void beantwoordVraagConsole(Spel spel) {
@@ -115,10 +86,4 @@ public class Console {
         spel.controleerWoord(input.next());
     }
 
-    //TODO controleren dat de juiste letters zijn gebruikt.
-    //TODO todo's weg werken
-    //TODO code opschonen
-    //TODO score
-    //TODO library uitbreiden
-    //TODO als quiz 2 gespeeld is weer beginnen bij quiz 1.
 }

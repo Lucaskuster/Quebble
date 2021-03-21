@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class DatabaseSpelers {
      ArrayList<Speler> spelers = new ArrayList<>();
 
-    public void DatabaseSpelers() {
+    public DatabaseSpelers() {
         Speler speler1 = new Speler("Lucas", "Lucas");
         Speler speler2 = new Speler("Olav", "Olav");
         spelers.add(speler1);

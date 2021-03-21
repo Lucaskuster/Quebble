@@ -6,14 +6,13 @@ import nl.han.ooad.quebble.service.Quiz;
 import nl.han.ooad.quebble.service.Vraag;
 
 import java.util.ArrayList;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class DatabaseQuizzes {
     ArrayList<Quiz> quizzes = new ArrayList<>();
     DatabaseVragen databaseVragen = new DatabaseVragen();
 
-    public void DatabaseQuizzes() {
+    public DatabaseQuizzes() {
         ArrayList<MeerkeuzeVraag> meerkeuzeVragen = databaseVragen.getMeerkeuzeVragen();
         ArrayList<OpenVraag> openVragen = databaseVragen.getOpenVragen();
 
